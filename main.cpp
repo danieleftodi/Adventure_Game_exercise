@@ -1,21 +1,21 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <stdbool.h>
+#include <cstdbool>
 
 using namespace std;
 
 int main() {
 
-	string places[10] = { "Camp", "Merchant", "Forest", "Market", "Dungeon",
-						  "Lake", "Mountain", ""};
-	bool explore = true;
-	int playerHP = 100;
-	string name;
-	cout << "Hello and welcome to Movant RPG!\nPlease enter your name: ";
-	cin >> name;
-    cout << "Hello " << name << ", let the adventure begin!" << endl;
-    cout << "You start att the camp." << endl;
-	cout << "Im working on battle";
+	string input[] = {"Adventure", "Battle"};
+
+	cout << "Welcome to my adventure game\n";
+	cout << "Choose\n\tAdventure\tBattle\n";
+
+	if()
+	{
+
+	}
+	
 	return 0;
 }
