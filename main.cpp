@@ -16,5 +16,6 @@ int main() {
 	cin >> name;
     cout << "Hello " << name << ", let the adventure begin!" << endl;
     cout << "You start att the camp." << endl;
+	cout << "Im working on battle";
 	return 0;
 }
