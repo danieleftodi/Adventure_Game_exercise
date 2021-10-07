@@ -32,3 +32,7 @@
 *.app
 
 .vscode/launch.json
+
+.vscode/c_cpp_properties.json
+
+.vscode/tasks.json
