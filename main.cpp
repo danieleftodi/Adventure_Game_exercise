@@ -6,14 +6,18 @@
 using namespace std;
 
 //global variables
-string playerName;
+
 
 int main() {
-	//local variables
+	//local variables (global for main function)
+	string playerName;
 	bool mainProgram{true};
 	bool playerNameLoop{true};
 	bool gameInformation{true};
 	vector <string> characterInventory;
+	int playerHP{50};
+	int skeletonHP{25};
+
 
 	while(gameInformation)
 	{
@@ -21,46 +25,26 @@ int main() {
 		string userInput;
 
 		system("cls");
-		cout << ("________  ._____.         ___.   .__           ________\n");
-		cout << ("\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n");
-		cout << (" |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n");
-		cout << (" |    `   \\  || \\_\\ \\/ __ \\| \\_\\ \\  |_(  <_> ) /       \\ \n");
-		cout << ("/_______  /__||___  (____  /___  /____/\\____/  \\_______ \\\n");
-		cout << ("        \\/        \\/     \\/    \\/                      \\/\n");
+		cout << "________  ._____.         ___.   .__           ________\n";
+		cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
+		cout << " |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n";
+		cout << " |    `   \\  || \\_\\ \\/ __ \\| \\_\\ \\  |_(  <_> ) /       \\ \n";
+		cout << "/_______  /__||___  (____  /___  /____/\\____/  \\_______ \\\n";
+		cout << "        \\/        \\/     \\/    \\/                      \\/\n";
 		cout << "\t\tAuther Adam\n\n\n";
 
 		cout << "Game Information:\n";
 		cout << "This is a school project of mine, dont judge it to hard :)\n";
-		cout << "The game is designed to be not case sensitive\n";
+		cout << "The game is designed to not be case sensitive\n";
 		cout << "All your input can be either small or large characters\n";
-		cout << "Or a combination of both";
+		cout << "Or a combination of both\n";
+		cout << "\nAlso please play the game in external console\n";
+		cout << "Otherwise my system clear screen wont work :)";
 		cout << endl << endl;
 		
-		cout << "Do you wish to continue into the game? (Yes/No)";
-
-		//user intput and transform to uppercase 		maby change to a function!!
-		cin >> userInput;
-		transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
-
-		if(userInput == "YES")
-		{
-			gameInformation = false;
-		}
-		else if(userInput == "NO")
-		{
-			cout << "Why not? :D\n";
-			system("pause");
-		}
-
-		else
-		{
-			cout << userInput << " Is not valid\n";
-			cout << "Try again!\n";
-			system("pause");
-		}
-
+		system("pause");
+		gameInformation = false;
 	}
-
 	while(playerNameLoop)
     		{
 				//local variables
@@ -91,7 +75,6 @@ int main() {
 		  		playerNameLoop = true;
 	   			}
     		}
-
 	//The game
 	while(mainProgram)
 	{
@@ -181,7 +164,6 @@ int main() {
 				}
 			}
 		}
-
 		else if(userInput == "ARENA")
 		{
 			//local variables
@@ -194,7 +176,7 @@ int main() {
 
 				system("cls");
 				cout << "Welcome to Arena\nChoose monster to fight:\n\n";
-				cout << "Skelleton\t\n";
+				cout << "Skeleton\n\n\nExit";
 				
 				//user intput and transform to uppercase 		maby redo to a function!!
 				cout << endl;
@@ -202,18 +184,17 @@ int main() {
 				cin >> userInput;
 				transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
 				
-				if(userInput == "SKELLETON")
+				if(userInput == "SKELETON")
 				{
 					//local variables
 					bool skelleton = true;
 
 					while(skelleton)
 					{
-						cout << "A skelleton attacks!";
+						cout << "A skeleton attacks!";
 						skelleton = false;
 					}
 				}
-
 				else if(userInput == "EXIT")
 				{
 					battleProgram = false;
@@ -221,7 +202,6 @@ int main() {
 
 			}
 		}
-
 		else if (userInput == "INVENTORY")
 		{	
 			system("cls");
@@ -235,7 +215,6 @@ int main() {
 			cout << endl;
 			system("pause");
 		}
-
 		else if (userInput == "QUIT")
 		mainProgram = false;
 
