@@ -70,18 +70,18 @@ int main() {
 				string userInput;
 
 				cout << "Welcome to Arena\nChoose monster to fight:\n";
-				cout << "Skeleton\t\n";
+				cout << "Skelleton\t\n";
 				
 				//user intput and transform to uppercase 		maby redo to a function!!
 				cout << playerName << " input: ";
 				cin >> userInput;
 				transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
 				
-				if (userInput == "Skelleton");
+				if (userInput == "SKELLETON");
 				{
 					//local variables
-					bool skeleton = true;
-					while (skeleton)
+					bool skelleton = true;
+					while (skelleton)
 					{
 						"A skeleton attacks!";
 					}
