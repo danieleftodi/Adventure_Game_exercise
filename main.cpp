@@ -3,20 +3,30 @@
 #include <cstdbool>
 #include <algorithm>
 #include <vector>
+#include <time.h>
+#include <windows.h>
 using namespace std;
 
 //global variables
 
+class player 
+{
+	public: 
+	string playerName;
+	int playerHP{50};
+	int playerEXP{400};
+};
+
 
 int main() {
 	//local variables (global for main function)
-	string playerName;
+	//string playerName;
 	bool mainProgram{true};
-	bool playerNameLoop{true};
 	bool gameInformation{true};
+	bool playerNameLoop{true};
 	vector <string> characterInventory;
-	int playerHP{50};
-	int skeletonHP{25};
+	player playerOne;
+	srand(time(0));
 
 
 	while(gameInformation)
@@ -52,9 +62,9 @@ int main() {
 
 				system("cls");
 	   			cout << "Enter your Character name: ";
-	   			cin >> playerName;
+	   			cin >> playerOne.playerName;
 
-	   			cout << "You inputted " << playerName << endl;
+	   			cout << "You inputted " << playerOne.playerName << endl;
 
 	   			cout << "Is this name Correct?(Y/N): ";
 	   			cin >> tryAgain;
@@ -90,7 +100,7 @@ int main() {
 		
 		//user intput and transform to uppercase 		maby change to a function!!
 		cout << endl;
-		cout << playerName << " input: ";
+		cout << playerOne.playerName << " input: ";
 		cin >> userInput;
 		transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
 
@@ -111,10 +121,10 @@ int main() {
 
 				//user intput and transform to uppercase 		maby redo to a function!!
 				cout << endl;
-				cout << playerName << " input: ";
+				cout << playerOne.playerName << " input: ";
 				cin >> userInput;
 				transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
-
+				
 				if(userInput == "CHEST")
 				{
 					//local variables
@@ -126,7 +136,7 @@ int main() {
 
 					//user intput and transform to uppercase 		maby redo to a function!!
 					cout << endl;
-					cout << playerName << " input: ";
+					cout << playerOne.playerName << " input: ";
 					cin >> userInput;
 					transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
 
@@ -136,13 +146,12 @@ int main() {
 						characterInventory.push_back("Black Cape");
 						system("pause");
 					}
-
 					else if(userInput == "NO")
 					{
 						cout << "Throwing away Black Cape";
 						system("pause");
 					}
-
+					//invalid input
 					else
 					{
 						cout << userInput << "Is not valid\n";
@@ -150,12 +159,11 @@ int main() {
 						system("pause");
 					}
 				}
-
 				else if (userInput == "EXIT")
 				{
 					bloodsmoor = false;
 				}
-				
+				//invalid input
 				else
 				{
 					cout << userInput << " Is not a valid input!\n";
@@ -180,19 +188,62 @@ int main() {
 				
 				//user intput and transform to uppercase 		maby redo to a function!!
 				cout << endl;
-				cout << playerName << " input: ";
+				cout << playerOne.playerName << " input: ";
 				cin >> userInput;
 				transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
 				
 				if(userInput == "SKELETON")
 				{
 					//local variables
-					bool skelleton = true;
+					int skeletonHP{25};
+					int skeletonAttack{0};
+					int playerAttack{0};
 
-					while(skelleton)
+					system("cls");
+					cout << "A wild skeleton attacks\n";
+
+					while (playerOne.playerHP >= 0 && skeletonHP >= 0)
 					{
-						cout << "A skeleton attacks!";
-						skelleton = false;
+						//player attacks
+						playerAttack = rand() % 10 + 1;
+						skeletonHP -= playerAttack;
+
+						//skeleton attacks
+						skeletonAttack = rand() % 4 + 1;
+						playerOne.playerHP -= skeletonAttack;
+
+						cout << playerOne.playerName << " Attacks Skeleton for: " << playerAttack << ". Skeleton has " << skeletonHP << " left. Skeleton attacks " 
+						<< playerOne.playerName << " for: " << skeletonAttack << " " << playerOne.playerName << " has " << playerOne.playerHP << " left.\n\n";
+						
+						Sleep(150);
+
+						if (playerOne.playerHP <= 0 || skeletonHP <= 0)
+						break;
+					} 
+
+					//gameover
+					if ( playerOne.playerHP < skeletonHP)
+					{
+						system("cls");
+						cout << "\tYou Died! A Skeleton defeted you!\n";
+						cout << "  ________                        ________                     \n";
+						cout << " /  _____/_____    _____   ____   \\_____  \\___  __ ___________ \n";
+						cout << "/   \\  ___\\__  \\  /     \\_/ __ \\   /   |   \\  \\/ // __ \\_  __ \\\n";
+						cout << "\\    \\_\\  \\/ __ \\|  Y Y  \\  ___/  /    |    \\   /\\  ___/|  | \\/\n";
+						cout << " \\______  (____  /__|_|  /\\___  > \\_______  /\\_/  \\___  >__|   \n";
+						cout << "        \\/     \\/      \\/     \\/          \\/          \\/       \n";
+						system("pause");
+						battleProgram = false;
+						mainProgram = false;
+					}
+
+
+					else
+					{
+						cout << playerOne.playerName << " defeated a skeleton! Congratulations\n";
+						cout << "You gain 40 Exp!\n";
+						playerOne.playerEXP += 40;
+						system("pause");
 					}
 				}
 				else if(userInput == "EXIT")
@@ -205,7 +256,9 @@ int main() {
 		else if (userInput == "INVENTORY")
 		{	
 			system("cls");
-			cout << "Welcome to your inventory!\n";
+			cout << "Welcome to your inventory and stats!\n";
+			cout << "Player Name: " << playerOne.playerName << endl;
+			cout << "Player Experiance: " << playerOne.playerEXP << endl << endl;
 			cout << "This is what you own:\n\n";
 
 			for (int i = 0; i < characterInventory.size(); i++)
