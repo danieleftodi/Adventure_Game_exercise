@@ -36,3 +36,11 @@
 .vscode/c_cpp_properties.json
 
 .vscode/tasks.json
+
+_BUILD/Adventure_Game_exercise/
+
+_BUILD/ModuleCache.noindex/
+
+_BUILD/.DS_Store
+
+.DS_Store
