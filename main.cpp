@@ -4,19 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include <time.h>
-// ROTFLOL! 😂🤣
-//#include <windows.h>          EXTREMLELY BAD PRATCIE! FOR A NEWBIE!
-//                              MAKE YOUR FREAKING CODE UNIVERSAL (POSIX) BY DEFAULT!
-//
-// ... so you gogoled your way here I see ...
-// ... and found that if you include
-//
-//     #include <windows.h>
-//
-// ... it will solve your "I want to wait 150 secs" ...
-//
-// ... YOU SHLOUD HAVE READ THIS: https://www.softwaretestinghelp.com/cpp-sleep/
-// ... of how to implement this in a POSIX (universal) way ... paddawan 😉
+
 #ifdef _WIN32
 #include <Windows.h>
 #else
@@ -50,15 +38,14 @@ int main() {
 
 	while(gameInformation)
 	{
-	//local variablies
+		//local variablies
 		string userInput;
 
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+		#ifdef _WIN32
         system("cls");
-#else
+		#else
         system("clear");
-#endif
+		#endif
 		cout << "________  ._____.         ___.   .__           ________\n";
 		cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
 		cout << " |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n";
@@ -76,14 +63,13 @@ int main() {
 		cout << "Otherwise my system clear screen wont work :)";
 		cout << endl << endl;
 		
-
-// POSIX way if doing this, since not every system (OS) has "pause" to wait for a keypress ...
-#ifdef _WIN32
+		#ifdef _WIN32
         system("pause");
-#else
+		#else
         cout << "Press any key to continue [Followed by Enter]: \n";
         cin >> (cInputPause);
-#endif
+		#endif
+
 		gameInformation = false;
 	}
 	while(playerNameLoop)
@@ -91,12 +77,13 @@ int main() {
 				//local variables
 				char tryAgain;
 
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+
+				#ifdef _WIN32
                 system("cls");
-#else
+				#else
                 system("clear");
-#endif
+				#endif
+
 	   			cout << "Enter your Character name: ";
 	   			cin >> playerOne.playerName;
 
@@ -106,24 +93,23 @@ int main() {
 	   			cin >> tryAgain;
 
 				tryAgain = (toupper(tryAgain));
-	   			if (tryAgain == 'Y')
-		  		playerNameLoop = false;
-
+	   			if (tryAgain == 'Y') playerNameLoop = false;
+		  		
 	   			else if (tryAgain == 'N')
 		  		{
                     playerNameLoop = true;
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+
+					#ifdef _WIN32
                     system("cls");
-#else
+					#else
                     system("clear");
-#endif
+					#endif
 				}
 	   			else
 	   			{	
-		 		cout << "Your input " << tryAgain << " is not valid.\n";
-		  		cout << "This program will assume that you want to continue.\n";
-		  		playerNameLoop = true;
+		 			cout << "Your input " << tryAgain << " is not valid.\n";
+		  			cout << "This program will assume that you want to continue.\n";
+		  			playerNameLoop = true;
 	   			}
     		}
 	//The game
@@ -132,12 +118,12 @@ int main() {
 		//local variables
 		string userInput;
 		
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+
+		#ifdef _WIN32
         system("cls");
-#else
+		#else
         system("clear");
-#endif
+		#endif
 		cout << "Dibablo 2\n";
 		    
 
@@ -160,12 +146,11 @@ int main() {
 				//local variables
 				string userInput;
 
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+				#ifdef _WIN32
                 system("cls");
-#else
+				#else
                 system("clear");
-#endif
+				#endif
 				cout << "Welcome to Blood Smoor\n";
 				cout << "Choose one of the following location:\n\n";
 				cout << "Chest\n\nExit\n";
@@ -181,12 +166,11 @@ int main() {
 					//local variables
 					string userInput;
 
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+					#ifdef _WIN32
                     system("cls");
-#else
+					#else
                     system("clear");
-#endif
+					#endif
 		 			cout << "You have found a chest!\n";
 					cout << "Content:\n\nBlack Cape\n\nKeep Content? (Yes/No)\n";
 
@@ -238,12 +222,11 @@ int main() {
 				//local variables
 				string userInput;
 
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+				#ifdef _WIN32
                 system("cls");
-#else
+				#else
                 system("clear");
-#endif
+				#endif
 				cout << "Welcome to Arena\nChoose monster to fight:\n\n";
 				cout << "Skeleton\n\n\nExit";
 				
@@ -260,12 +243,11 @@ int main() {
 					int skeletonAttack{0};
 					int playerAttack{0};
 
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+					#ifdef _WIN32
                     system("cls");
-#else
+					#else
                     system("clear");
-#endif
+					#endif
 					cout << "A wild skeleton attacks\n";
 
 					while (playerOne.playerHP >= 0 && skeletonHP >= 0)
@@ -281,12 +263,11 @@ int main() {
 						cout << playerOne.playerName << " Attacks Skeleton for: " << playerAttack << ". Skeleton has " << skeletonHP << " left. Skeleton attacks " 
 						<< playerOne.playerName << " for: " << skeletonAttack << " " << playerOne.playerName << " has " << playerOne.playerHP << " left.\n\n";
 
-// Odd that it's spelled with a capital letter ...
-#ifdef _WIN32
+						#ifdef _WIN32
                         Sleep(150);
-#else
+						#else
                         sleep(150);
-#endif
+						#endif
                         
 
 						if (playerOne.playerHP <= 0 || skeletonHP <= 0)
@@ -296,12 +277,11 @@ int main() {
 					//gameover
 					if ( playerOne.playerHP < skeletonHP)
 					{
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+						#ifdef _WIN32
                         system("cls");
-#else
+						#else
                         system("clear");
-#endif
+						#endif
 						cout << "\tYou Died! A Skeleton defeted you!\n";
 						cout << "  ________                        ________                     \n";
 						cout << " /  _____/_____    _____   ____   \\_____  \\___  __ ___________ \n";
@@ -332,12 +312,11 @@ int main() {
 		}
 		else if (userInput == "INVENTORY")
 		{	
-// POSIX way if doing this, since not every system (OS) has "cls" for clear the screen ...
-#ifdef _WIN32
+			#ifdef _WIN32
             system("cls");
-#else
+			#else
             system("clear");
-#endif
+			#endif
 			cout << "Welcome to your inventory and stats!\n";
 			cout << "Player Name: " << playerOne.playerName << endl;
 			cout << "Player Experiance: " << playerOne.playerEXP << endl << endl;
