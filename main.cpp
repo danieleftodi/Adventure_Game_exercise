@@ -25,7 +25,7 @@ class player
 player playerOne;
 string Input;
 
-
+//prototyping functions, declarations are at bottom
 void clearScreen();
 void pauseScreen();
 void delayScreen();
@@ -33,7 +33,7 @@ string userInput();
 
 int main() 
 {
-	//local variables (global for main function)
+	//local variables
 	bool mainProgram{true};
 	bool gameInformation{true};
 	bool playerNameLoop{true};
@@ -43,9 +43,6 @@ int main()
 
 	while(gameInformation)
 	{
-		//local variablies
-		string userInput;
-
 		clearScreen();
 		cout << "________  ._____.         ___.   .__           ________\n";
 		cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
@@ -154,7 +151,6 @@ int main()
 				else
 				{
 					cout << userInput << " Is not a valid input!\n";
-					cout << "Try Again!\n";
 					pauseScreen();
 				}
 			}
@@ -258,7 +254,6 @@ int main()
 		else
 		{
 			cout << userInput << " Is not valid\n";
-			cout << "Try Again\n";
 			pauseScreen();
 		}
 	}
