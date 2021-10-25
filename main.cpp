@@ -280,8 +280,14 @@ int main() {
 
 						cout << playerOne.playerName << " Attacks Skeleton for: " << playerAttack << ". Skeleton has " << skeletonHP << " left. Skeleton attacks " 
 						<< playerOne.playerName << " for: " << skeletonAttack << " " << playerOne.playerName << " has " << playerOne.playerHP << " left.\n\n";
-						
+
+// Odd that it's spelled with a capital letter ...
+#ifdef _WIN32
+                        Sleep(150);
+#else
                         sleep(150);
+#endif
+                        
 
 						if (playerOne.playerHP <= 0 || skeletonHP <= 0)
 						break;
