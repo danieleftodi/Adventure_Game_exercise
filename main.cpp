@@ -43,7 +43,7 @@ int main()
 	//pre game information screen
 	gameInformation();
 
-	//player enter character name
+	//enter character name
 	playerNameLoop();
 
 	//The main game starts here
@@ -288,10 +288,10 @@ void pauseScreen()
 {
 	char cInputPause = '\0';
 #ifdef _WIN32
-    system("pause");
+	system("pause");
 #else
-    cout << "Press any key to continue [Followed by Enter]: \n";
-    cin >> (cInputPause);
+	cout << "Press any key to continue [Followed by Enter]: \n";
+	cin >> (cInputPause);
 #endif
 }
 void delayScreen()
