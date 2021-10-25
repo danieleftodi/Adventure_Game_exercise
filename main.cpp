@@ -31,9 +31,9 @@ void pauseScreen();
 void delayScreen();
 string userInput();
 
-int main() {
+int main() 
+{
 	//local variables (global for main function)
-	//string playerName;
 	bool mainProgram{true};
 	bool gameInformation{true};
 	bool playerNameLoop{true};
@@ -67,34 +67,36 @@ int main() {
 		pauseScreen();
 		gameInformation = false;
 	}
+
 	while(playerNameLoop)
-    		{
-				//local variables
-				char tryAgain;
+	{
+		//local variables
+		char tryAgain;
 				
-				clearScreen();
-	   			cout << "Enter your Character name: ";
-	   			cin >> playerOne.playerName;
+		clearScreen();
+		cout << "Enter your Character name: ";
+		cin >> playerOne.playerName;
 
-	   			cout << "You inputted " << playerOne.playerName << endl;
+		cout << "You inputted " << playerOne.playerName << endl;
 
-	   			cout << "Is this name Correct?(Y/N): ";
-	   			cin >> tryAgain;
+	   	cout << "Is this name Correct?(Y/N): ";
+	   	cin >> tryAgain;
 
-				tryAgain = (toupper(tryAgain));
-	   			if (tryAgain == 'Y') playerNameLoop = false;
-		  		
-	   			else if (tryAgain == 'N')
-		  		{
-                    playerNameLoop = true;
-					clearScreen();
-				}
-	   			else
-	   			{	
-		  			playerNameLoop = true;
-	   			}
-    		}
-	//The game
+		tryAgain = (toupper(tryAgain));
+	   	if (tryAgain == 'Y') playerNameLoop = false;
+			
+	   	else if (tryAgain == 'N')
+		{
+            playerNameLoop = true;
+			clearScreen();
+		}
+	   	else
+	   	{	
+			playerNameLoop = true;
+	   	}
+	}
+
+	//The main game starts here
 	while(mainProgram)
 	{
 		clearScreen();
@@ -249,7 +251,7 @@ int main() {
 			cout << endl;
 			pauseScreen();
 		}
-		
+
 		else if (Input == "QUIT") mainProgram = false;
 		
 		//invalid input
