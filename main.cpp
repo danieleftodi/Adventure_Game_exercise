@@ -21,9 +21,15 @@ class player
 	int playerEXP{400};
 };
 
+//global variables
+player playerOne;
+string Input;
+
+
 void clearScreen();
 void pauseScreen();
 void delayScreen();
+string userInput();
 
 int main() {
 	//local variables (global for main function)
@@ -32,7 +38,6 @@ int main() {
 	bool gameInformation{true};
 	bool playerNameLoop{true};
 	vector <string> characterInventory;
-	player playerOne;
 	srand(time(0));
 
 
@@ -92,65 +97,41 @@ int main() {
 	//The game
 	while(mainProgram)
 	{
-		//local variables
-		string userInput;
-		
 		clearScreen();
 		cout << "Dibablo 2\n";
-		    
-
 		cout << "Choose one of the following:\n\nAdventure\nArena\nInventory\n\nQuit\n";
 
-		
-		//user intput and transform to uppercase 		maby change to a function!!
-		cout << endl;
-		cout << playerOne.playerName << " input: ";
-		cin >> userInput;
-		transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
+		userInput();
 
-		if(userInput == "ADVENTURE")
+		if(Input == "ADVENTURE")
 		{
 			//local variables
 			bool bloodsmoor = true;
 
 			while(bloodsmoor)
 			{
-				//local variables
-				string userInput;
-
 				clearScreen();
 				cout << "Welcome to Blood Smoor\n";
 				cout << "Choose one of the following location:\n\n";
 				cout << "Chest\n\nExit\n";
 
-				//user intput and transform to uppercase 		maby redo to a function!!
-				cout << endl;
-				cout << playerOne.playerName << " input: ";
-				cin >> userInput;
-				transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
+				userInput();
 				
-				if(userInput == "CHEST")
+				if(Input == "CHEST")
 				{
-					//local variables
-					string userInput;
-
 					clearScreen();
 		 			cout << "You have found a chest!\n";
 					cout << "Content:\n\nBlack Cape\n\nKeep Content? (Yes/No)\n";
 
-					//user intput and transform to uppercase 		maby redo to a function!!
-					cout << endl;
-					cout << playerOne.playerName << " input: ";
-					cin >> userInput;
-					transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
+					userInput();
 
-					if(userInput == "YES")
+					if(Input == "YES")
 					{
 						cout << "\nAdded Black Cape to inventory\n";
 						characterInventory.push_back("Black Cape");
 						pauseScreen();
 					}
-					else if(userInput == "NO")
+					else if(Input == "NO")
 					{
 						cout << "Throwing away Black Cape";
 						pauseScreen();
@@ -163,7 +144,7 @@ int main() {
 						pauseScreen();
 					}
 				}
-				else if (userInput == "EXIT")
+				else if (Input == "EXIT")
 				{
 					bloodsmoor = false;
 				}
@@ -176,27 +157,21 @@ int main() {
 				}
 			}
 		}
-		else if(userInput == "ARENA")
+
+		else if(Input == "ARENA")
 		{
 			//local variables
 			bool battleProgram = true;
 
 			while(battleProgram)
 			{
-				//local variables
-				string userInput;
-
 				clearScreen();
 				cout << "Welcome to Arena\nChoose monster to fight:\n\n";
 				cout << "Skeleton\n\n\nExit";
 				
-				//user intput and transform to uppercase 		maby redo to a function!!
-				cout << endl;
-				cout << playerOne.playerName << " input: ";
-				cin >> userInput;
-				transform(userInput.begin(), userInput.end(), userInput.begin(), ::toupper);
+				userInput();
 				
-				if(userInput == "SKELETON")
+				if(Input == "SKELETON")
 				{
 					//local variables
 					int skeletonHP{25};
@@ -250,14 +225,15 @@ int main() {
 						pauseScreen();
 					}
 				}
-				else if(userInput == "EXIT")
+				else if(Input == "EXIT")
 				{
 					battleProgram = false;
 				}
 
 			}
 		}
-		else if (userInput == "INVENTORY")
+
+		else if (Input == "INVENTORY")
 		{	
 			clearScreen();
 			cout << "Welcome to your inventory and stats!\n";
@@ -273,7 +249,8 @@ int main() {
 			cout << endl;
 			pauseScreen();
 		}
-		else if (userInput == "QUIT") mainProgram = false;
+		
+		else if (Input == "QUIT") mainProgram = false;
 		
 		//invalid input
 		else
@@ -286,6 +263,15 @@ int main() {
 	return 0;
 }
 
+string userInput()
+{
+	cout << endl;
+	cout << playerOne.playerName << " input: ";
+	cin >> Input;
+	transform(Input.begin(), Input.end(), Input.begin(), ::toupper);
+	return Input;
+}
+
 void clearScreen()
 {
 #ifdef _WIN32
@@ -294,6 +280,7 @@ void clearScreen()
     system("clear");
 #endif
 }
+
 void pauseScreen()
 {
 	char cInputPause = '\0';
@@ -304,6 +291,7 @@ void pauseScreen()
     cin >> (cInputPause);
 #endif
 }
+
 void delayScreen()
 {
 #ifdef _WIN32
