@@ -13,8 +13,6 @@
 
 using namespace std;
 
-//global variables
-
 class player 
 {
 	public: 
@@ -23,6 +21,9 @@ class player
 	int playerEXP{400};
 };
 
+void clearScreen();
+void pauseScreen();
+void delayScreen();
 
 int main() {
 	//local variables (global for main function)
@@ -30,7 +31,6 @@ int main() {
 	bool mainProgram{true};
 	bool gameInformation{true};
 	bool playerNameLoop{true};
-    char cInputPause = '\0';
 	vector <string> characterInventory;
 	player playerOne;
 	srand(time(0));
@@ -41,11 +41,7 @@ int main() {
 		//local variablies
 		string userInput;
 
-		#ifdef _WIN32
-        system("cls");
-		#else
-        system("clear");
-		#endif
+		clearScreen();
 		cout << "________  ._____.         ___.   .__           ________\n";
 		cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
 		cout << " |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n";
@@ -63,27 +59,15 @@ int main() {
 		cout << "Otherwise my system clear screen wont work :)";
 		cout << endl << endl;
 		
-		#ifdef _WIN32
-        system("pause");
-		#else
-        cout << "Press any key to continue [Followed by Enter]: \n";
-        cin >> (cInputPause);
-		#endif
-
+		pauseScreen();
 		gameInformation = false;
 	}
 	while(playerNameLoop)
     		{
 				//local variables
 				char tryAgain;
-
-
-				#ifdef _WIN32
-                system("cls");
-				#else
-                system("clear");
-				#endif
-
+				
+				clearScreen();
 	   			cout << "Enter your Character name: ";
 	   			cin >> playerOne.playerName;
 
@@ -98,17 +82,10 @@ int main() {
 	   			else if (tryAgain == 'N')
 		  		{
                     playerNameLoop = true;
-
-					#ifdef _WIN32
-                    system("cls");
-					#else
-                    system("clear");
-					#endif
+					clearScreen();
 				}
 	   			else
 	   			{	
-		 			cout << "Your input " << tryAgain << " is not valid.\n";
-		  			cout << "This program will assume that you want to continue.\n";
 		  			playerNameLoop = true;
 	   			}
     		}
@@ -118,12 +95,7 @@ int main() {
 		//local variables
 		string userInput;
 		
-
-		#ifdef _WIN32
-        system("cls");
-		#else
-        system("clear");
-		#endif
+		clearScreen();
 		cout << "Dibablo 2\n";
 		    
 
@@ -146,11 +118,7 @@ int main() {
 				//local variables
 				string userInput;
 
-				#ifdef _WIN32
-                system("cls");
-				#else
-                system("clear");
-				#endif
+				clearScreen();
 				cout << "Welcome to Blood Smoor\n";
 				cout << "Choose one of the following location:\n\n";
 				cout << "Chest\n\nExit\n";
@@ -166,11 +134,7 @@ int main() {
 					//local variables
 					string userInput;
 
-					#ifdef _WIN32
-                    system("cls");
-					#else
-                    system("clear");
-					#endif
+					clearScreen();
 		 			cout << "You have found a chest!\n";
 					cout << "Content:\n\nBlack Cape\n\nKeep Content? (Yes/No)\n";
 
@@ -184,19 +148,19 @@ int main() {
 					{
 						cout << "\nAdded Black Cape to inventory\n";
 						characterInventory.push_back("Black Cape");
-						system("pause");
+						pauseScreen();
 					}
 					else if(userInput == "NO")
 					{
 						cout << "Throwing away Black Cape";
-						system("pause");
+						pauseScreen();
 					}
 					//invalid input
 					else
 					{
 						cout << userInput << "Is not valid\n";
 						cout << "You just threw away the cape\n";
-						system("pause");
+						pauseScreen();
 					}
 				}
 				else if (userInput == "EXIT")
@@ -208,7 +172,7 @@ int main() {
 				{
 					cout << userInput << " Is not a valid input!\n";
 					cout << "Try Again!\n";
-					system("pause");
+					pauseScreen();
 				}
 			}
 		}
@@ -222,11 +186,7 @@ int main() {
 				//local variables
 				string userInput;
 
-				#ifdef _WIN32
-                system("cls");
-				#else
-                system("clear");
-				#endif
+				clearScreen();
 				cout << "Welcome to Arena\nChoose monster to fight:\n\n";
 				cout << "Skeleton\n\n\nExit";
 				
@@ -243,11 +203,7 @@ int main() {
 					int skeletonAttack{0};
 					int playerAttack{0};
 
-					#ifdef _WIN32
-                    system("cls");
-					#else
-                    system("clear");
-					#endif
+					clearScreen();
 					cout << "A wild skeleton attacks\n";
 
 					while (playerOne.playerHP >= 0 && skeletonHP >= 0)
@@ -263,12 +219,7 @@ int main() {
 						cout << playerOne.playerName << " Attacks Skeleton for: " << playerAttack << ". Skeleton has " << skeletonHP << " left. Skeleton attacks " 
 						<< playerOne.playerName << " for: " << skeletonAttack << " " << playerOne.playerName << " has " << playerOne.playerHP << " left.\n\n";
 
-						#ifdef _WIN32
-                        Sleep(150);
-						#else
-                        sleep(150);
-						#endif
-                        
+						delayScreen();
 
 						if (playerOne.playerHP <= 0 || skeletonHP <= 0)
 						break;
@@ -277,11 +228,7 @@ int main() {
 					//gameover
 					if ( playerOne.playerHP < skeletonHP)
 					{
-						#ifdef _WIN32
-                        system("cls");
-						#else
-                        system("clear");
-						#endif
+						clearScreen();
 						cout << "\tYou Died! A Skeleton defeted you!\n";
 						cout << "  ________                        ________                     \n";
 						cout << " /  _____/_____    _____   ____   \\_____  \\___  __ ___________ \n";
@@ -289,7 +236,7 @@ int main() {
 						cout << "\\    \\_\\  \\/ __ \\|  Y Y  \\  ___/  /    |    \\   /\\  ___/|  | \\/\n";
 						cout << " \\______  (____  /__|_|  /\\___  > \\_______  /\\_/  \\___  >__|   \n";
 						cout << "        \\/     \\/      \\/     \\/          \\/          \\/       \n";
-						system("pause");
+						pauseScreen();
 						battleProgram = false;
 						mainProgram = false;
 					}
@@ -300,7 +247,7 @@ int main() {
 						cout << playerOne.playerName << " defeated a skeleton! Congratulations\n";
 						cout << "You gain 40 Exp!\n";
 						playerOne.playerEXP += 40;
-						system("pause");
+						pauseScreen();
 					}
 				}
 				else if(userInput == "EXIT")
@@ -312,13 +259,10 @@ int main() {
 		}
 		else if (userInput == "INVENTORY")
 		{	
-			#ifdef _WIN32
-            system("cls");
-			#else
-            system("clear");
-			#endif
+			clearScreen();
 			cout << "Welcome to your inventory and stats!\n";
 			cout << "Player Name: " << playerOne.playerName << endl;
+			cout << "Player Health: " << playerOne.playerHP << endl;
 			cout << "Player Experiance: " << playerOne.playerEXP << endl << endl;
 			cout << "This is what you own:\n\n";
 
@@ -327,7 +271,7 @@ int main() {
 				cout << characterInventory[i] << endl;
 			}
 			cout << endl;
-			system("pause");
+			pauseScreen();
 		}
 		else if (userInput == "QUIT")
 		mainProgram = false;
@@ -337,8 +281,37 @@ int main() {
 		{
 			cout << userInput << " Is not valid\n";
 			cout << "Try Again\n";
-			system("pause");
+			pauseScreen();
 		}
 	}
 	return 0;
+}
+
+void clearScreen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void pauseScreen()
+{
+	char cInputPause = '\0';
+#ifdef _WIN32
+    system("pause");
+#else
+    cout << "Press any key to continue [Followed by Enter]: \n";
+    cin >> (cInputPause);
+#endif
+}
+
+void delayScreen()
+{
+#ifdef _WIN32
+    Sleep(150);
+#else
+    sleep(150);
+#endif
 }
