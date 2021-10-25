@@ -273,9 +273,8 @@ int main() {
 			cout << endl;
 			pauseScreen();
 		}
-		else if (userInput == "QUIT")
-		mainProgram = false;
-
+		else if (userInput == "QUIT") mainProgram = false;
+		
 		//invalid input
 		else
 		{
@@ -295,7 +294,6 @@ void clearScreen()
     system("clear");
 #endif
 }
-
 void pauseScreen()
 {
 	char cInputPause = '\0';
@@ -306,7 +304,6 @@ void pauseScreen()
     cin >> (cInputPause);
 #endif
 }
-
 void delayScreen()
 {
 #ifdef _WIN32
