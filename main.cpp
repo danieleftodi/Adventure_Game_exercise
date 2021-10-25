@@ -279,9 +279,9 @@ string userInput()
 void clearScreen()
 {
 #ifdef _WIN32
-    system("cls");
+	system("cls");
 #else
-    system("clear");
+	system("clear");
 #endif
 }
 void pauseScreen()
@@ -297,8 +297,8 @@ void pauseScreen()
 void delayScreen()
 {
 #ifdef _WIN32
-    Sleep(150);
+	Sleep(150);
 #else
-    sleep(150);
+	sleep(150);
 #endif
 }
