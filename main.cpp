@@ -79,21 +79,21 @@ int main()
 
 		cout << "You inputted " << playerOne.playerName << endl;
 
-	   	cout << "Is this name Correct?(Y/N): ";
-	   	cin >> tryAgain;
+		cout << "Is this name Correct?(Y/N): ";
+		cin >> tryAgain;
 
 		tryAgain = (toupper(tryAgain));
-	   	if (tryAgain == 'Y') playerNameLoop = false;
+		if (tryAgain == 'Y') playerNameLoop = false;
 			
-	   	else if (tryAgain == 'N')
+		else if (tryAgain == 'N')
 		{
-            playerNameLoop = true;
+			playerNameLoop = true;
 			clearScreen();
 		}
-	   	else
-	   	{	
+		else
+		{	
 			playerNameLoop = true;
-	   	}
+		}
 	}
 
 	//The main game starts here
