@@ -13,9 +13,15 @@
 
 using namespace std;
 
+//prototyping functions, declarations are at bottom
+void clearScreen();
+void pauseScreen();
+void delayScreen();
+string userInput();
+
 class player 
 {
-	public: 
+	public:
 	string playerName;
 	int playerHP{50};
 	int playerEXP{400};
@@ -24,12 +30,6 @@ class player
 //global variables
 player playerOne;
 string Input;
-
-//prototyping functions, declarations are at bottom
-void clearScreen();
-void pauseScreen();
-void delayScreen();
-string userInput();
 
 int main() 
 {
@@ -107,6 +107,7 @@ int main()
 			//local variables
 			bool bloodsmoor = true;
 
+			//location bloodsmore
 			while(bloodsmoor)
 			{
 				clearScreen();
@@ -253,7 +254,7 @@ int main()
 		//invalid input
 		else
 		{
-			cout << userInput << " Is not valid\n";
+			cout << userInput << " Is not a valid input!\n";
 			pauseScreen();
 		}
 	}
