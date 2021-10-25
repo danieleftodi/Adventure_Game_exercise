@@ -18,6 +18,8 @@ void clearScreen();
 void pauseScreen();
 void delayScreen();
 string userInput();
+void gameInformation();
+void playerNameLoop();
 
 class player 
 {
@@ -35,63 +37,14 @@ int main()
 {
 	//local variables
 	bool mainProgram{true};
-	bool gameInformation{true};
-	bool playerNameLoop{true};
 	vector <string> characterInventory;
 	srand(time(0));
 
+	//pre game information screen
+	gameInformation();
 
-	while(gameInformation)
-	{
-		clearScreen();
-		cout << "________  ._____.         ___.   .__           ________\n";
-		cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
-		cout << " |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n";
-		cout << " |    `   \\  || \\_\\ \\/ __ \\| \\_\\ \\  |_(  <_> ) /       \\ \n";
-		cout << "/_______  /__||___  (____  /___  /____/\\____/  \\_______ \\\n";
-		cout << "        \\/        \\/     \\/    \\/                      \\/\n";
-		cout << "\t\tAuther Adam\n\n\n";
-
-		cout << "Game Information:\n";
-		cout << "This is a school project of mine, dont judge it to hard :)\n";
-		cout << "The game is designed to not be case sensitive\n";
-		cout << "All your input can be either small or large characters\n";
-		cout << "Or a combination of both\n";
-		cout << "\nAlso please play the game in external console\n";
-		cout << "Otherwise my system clear screen wont work :)";
-		cout << endl << endl;
-		
-		pauseScreen();
-		gameInformation = false;
-	}
-
-	while(playerNameLoop)
-	{
-		//local variables
-		char tryAgain;
-				
-		clearScreen();
-		cout << "Enter your Character name: ";
-		cin >> playerOne.playerName;
-
-		cout << "You inputted " << playerOne.playerName << endl;
-
-		cout << "Is this name Correct?(Y/N): ";
-		cin >> tryAgain;
-
-		tryAgain = (toupper(tryAgain));
-		if (tryAgain == 'Y') playerNameLoop = false;
-			
-		else if (tryAgain == 'N')
-		{
-			playerNameLoop = true;
-			clearScreen();
-		}
-		else
-		{	
-			playerNameLoop = true;
-		}
-	}
+	//player enter character name
+	playerNameLoop();
 
 	//The main game starts here
 	while(mainProgram)
@@ -236,9 +189,9 @@ int main()
 		{	
 			clearScreen();
 			cout << "Welcome to your inventory and stats!\n";
-			cout << "Player Name: " << playerOne.playerName << endl;
-			cout << "Player Health: " << playerOne.playerHP << endl;
-			cout << "Player Experiance: " << playerOne.playerEXP << endl << endl;
+			cout << "Name: " << playerOne.playerName << endl;
+			cout << "Health: " << playerOne.playerHP << endl;
+			cout << "Experiance: " << playerOne.playerEXP << endl << endl;
 			cout << "This is what you own:\n\n";
 
 			for (int i = 0; i < characterInventory.size(); i++)
@@ -260,7 +213,66 @@ int main()
 	}
 	return 0;
 }
+void playerNameLoop()
+{
+	//local variables
+	bool playerNameLoop{true};
+	char tryAgain;
 
+	while(playerNameLoop)
+	{	
+		clearScreen();
+		cout << "Enter your Character name: ";
+		cin >> playerOne.playerName;
+
+		cout << "You inputted " << playerOne.playerName << endl;
+
+		cout << "Is this name Correct?(Y/N): ";
+		cin >> tryAgain;
+
+		tryAgain = (toupper(tryAgain));
+		if (tryAgain == 'Y')
+		{
+			playerNameLoop = false;
+		}	
+		else if (tryAgain == 'N')
+		{
+			playerNameLoop = true;
+			clearScreen();
+		}
+		else
+		{	
+			playerNameLoop = true;
+		}
+	}
+}
+void gameInformation()
+{
+	bool gameInformation{true};
+	while(gameInformation)
+	{
+		clearScreen();
+		cout << "________  ._____.         ___.   .__           ________\n";
+		cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
+		cout << " |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n";
+		cout << " |    `   \\  || \\_\\ \\/ __ \\| \\_\\ \\  |_(  <_> ) /       \\ \n";
+		cout << "/_______  /__||___  (____  /___  /____/\\____/  \\_______ \\\n";
+		cout << "        \\/        \\/     \\/    \\/                      \\/\n";
+		cout << "\t\tAuther Adam\n\n\n";
+
+		cout << "Game Information:\n";
+		cout << "This is a school project of mine, dont judge it to hard :)\n";
+		cout << "The game is designed to not be case sensitive\n";
+		cout << "All your input can be either small or large characters\n";
+		cout << "Or a combination of both\n";
+		cout << "\nAlso please play the game in external console\n";
+		cout << "Otherwise my system clear screen wont work :)";
+		cout << endl << endl;
+		
+		pauseScreen();
+		gameInformation = false;
+	}
+}
 string userInput()
 {
 	cout << endl;
@@ -269,7 +281,6 @@ string userInput()
 	transform(Input.begin(), Input.end(), Input.begin(), ::toupper);
 	return Input;
 }
-
 void clearScreen()
 {
 #ifdef _WIN32
@@ -278,7 +289,6 @@ void clearScreen()
     system("clear");
 #endif
 }
-
 void pauseScreen()
 {
 	char cInputPause = '\0';
@@ -289,7 +299,6 @@ void pauseScreen()
     cin >> (cInputPause);
 #endif
 }
-
 void delayScreen()
 {
 #ifdef _WIN32
