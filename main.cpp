@@ -213,6 +213,28 @@ int main()
 	}
 	return 0;
 }
+void gameInformation()
+{
+	clearScreen();
+	cout << "________  ._____.         ___.   .__           ________\n";
+	cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
+	cout << " |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n";
+	cout << " |    `   \\  || \\_\\ \\/ __ \\| \\_\\ \\  |_(  <_> ) /       \\ \n";
+	cout << "/_______  /__||___  (____  /___  /____/\\____/  \\_______ \\\n";
+	cout << "        \\/        \\/     \\/    \\/                      \\/\n";
+	cout << "\t\tAuther Adam\n\n\n";
+
+	cout << "Game Information:\n";
+	cout << "This is a school project of mine, dont judge it to hard :)\n";
+	cout << "The game is designed to not be case sensitive\n";
+	cout << "All your input can be either small or large characters\n";
+	cout << "Or a combination of both\n";
+	cout << "\nAlso please play the game in external console\n";
+	cout << "Otherwise my system clear screen wont work :)";
+	cout << endl << endl;
+	
+	pauseScreen();
+}
 void playerNameLoop()
 {
 	//local variables
@@ -244,33 +266,6 @@ void playerNameLoop()
 		{	
 			playerNameLoop = true;
 		}
-	}
-}
-void gameInformation()
-{
-	bool gameInformation{true};
-	while(gameInformation)
-	{
-		clearScreen();
-		cout << "________  ._____.         ___.   .__           ________\n";
-		cout << "\\______ \\ |__\\_ |__ _____ \\_ |__ |  |   ____   \\_____  \\\n";
-		cout << " |    |  \\|  || __ \\__   \\ | __ \\|  |  /  _ \\   /  ____/\n";
-		cout << " |    `   \\  || \\_\\ \\/ __ \\| \\_\\ \\  |_(  <_> ) /       \\ \n";
-		cout << "/_______  /__||___  (____  /___  /____/\\____/  \\_______ \\\n";
-		cout << "        \\/        \\/     \\/    \\/                      \\/\n";
-		cout << "\t\tAuther Adam\n\n\n";
-
-		cout << "Game Information:\n";
-		cout << "This is a school project of mine, dont judge it to hard :)\n";
-		cout << "The game is designed to not be case sensitive\n";
-		cout << "All your input can be either small or large characters\n";
-		cout << "Or a combination of both\n";
-		cout << "\nAlso please play the game in external console\n";
-		cout << "Otherwise my system clear screen wont work :)";
-		cout << endl << endl;
-		
-		pauseScreen();
-		gameInformation = false;
 	}
 }
 string userInput()
