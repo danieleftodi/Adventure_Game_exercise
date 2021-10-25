@@ -6,9 +6,9 @@
 #include <time.h>
 
 #ifdef _WIN32
-#include <Windows.h>
+	#include <Windows.h>
 #else
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 
 using namespace std;
@@ -278,27 +278,27 @@ string userInput()
 }
 void clearScreen()
 {
-#ifdef _WIN32
-	system("cls");
-#else
-	system("clear");
-#endif
+	#ifdef _WIN32
+		system("cls");
+	#else
+		system("clear");
+	#endif
 }
-void pauseScreen()
+void pauseScreen()	
 {
 	char cInputPause = '\0';
-#ifdef _WIN32
-	system("pause");
-#else
-	cout << "Press any key to continue [Followed by Enter]: \n";
-	cin >> (cInputPause);
-#endif
+	#ifdef _WIN32
+		system("pause");
+	#else
+		cout << "Press any key to continue [Followed by Enter]: \n";
+		cin >> (cInputPause);
+	#endif	
 }
 void delayScreen()
 {
-#ifdef _WIN32
-	Sleep(150);
-#else
-	sleep(150);
-#endif
+	#ifdef _WIN32
+		Sleep(150);
+	#else
+		sleep(150);
+	#endif
 }
