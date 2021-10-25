@@ -133,7 +133,7 @@ int main()
 					clearScreen();
 					cout << "A wild skeleton attacks\n";
 
-					while (playerOne.playerHP >= 0 && skeletonHP >= 0)
+					while (playerOne.playerHP > 0 && skeletonHP > 0)
 					{
 						//player attacks
 						playerAttack = rand() % 10 + 1;
@@ -227,8 +227,7 @@ void gameInformation()
 	cout << "Game Information:\n";
 	cout << "This is a school project of mine, dont judge it to hard :)\n";
 	cout << "The game is designed to not be case sensitive\n";
-	cout << "All your input can be either small or large characters\n";
-	cout << "Or a combination of both\n";
+	cout << "And to work on Windows and Unix/Linux based systems\n";
 	cout << "\nAlso please play the game in external console\n";
 	cout << "Otherwise my system clear screen wont work :)";
 	cout << endl << endl;
