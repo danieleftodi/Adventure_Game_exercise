@@ -46,3 +46,7 @@ _BUILD/.DS_Store
 .DS_Store
 
 Adventure_Game_exercise.xcodeproj/project.xcworkspace/xcuserdata/seludeft.xcuserdatad/UserInterfaceState.xcuserstate
+
+main.dSYM/
+
+hello_world.dSYM/

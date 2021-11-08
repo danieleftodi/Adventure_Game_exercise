@@ -277,7 +277,7 @@ string userInput()
 }
 void clearScreen()
 {
-	#ifdef _WIN32
+	#ifdef __WIN32__
 		system("cls");
 	#else
 		system("clear");
